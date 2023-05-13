@@ -7,7 +7,7 @@ class Principal(tk.Frame):
     BG_COLOR = '#b0acac'
     FG_COLOR = '#000000'
     FONT_NAME = 'Helvetica'
-    FONT_SIZE = 8
+    FONT_SIZE = 10
 
     BG_COLOR_ENCRYPT = '#2ab528'
     FG_COLOR_ENCRYPT = '#000000'
@@ -23,17 +23,18 @@ class Principal(tk.Frame):
         super().__init__(master)
         self.master = master
         style = ttk.Style()
-        style.theme_use("vista")
+        style.theme_use("clam")
 
         self.algorithm = ('Select', 'PBEWITHHMACSHA512ANDAES_128', 'PBEWITHHMACSHA512ANDAES_256')
         self.generator = ('Select', 'org.jasypt.iv.RandomIvGenerator')
 
-        style.configure("Red.TButton", background="red", foreground="red")
-        style.configure("Green.TButton", background="green", foreground="red")
+        style.configure("Red.TButton", background="red", foreground="black")
+        style.configure("Green.TButton", background="green", foreground="black")
         style.configure("Transparent.TLabel", background=self.BG_COLOR, foreground=self.FG_COLOR)
+        style.configure("Bold.TLabel", font=("Arial", 10, "bold"), background=self.BG_COLOR, foreground=self.FG_COLOR)
 
         self.master.title("CryptoKeeper")
-        self.master.geometry("500x400")
+        self.master.geometry("500x440")
         self.master.resizable(False, False)
         self.master.configure(background=self.BG_COLOR)
         self.master.columnconfigure(1, weight=1)
@@ -52,30 +53,30 @@ class Principal(tk.Frame):
         self.master.config(menu=menubar)
 
         # Create password field
-        ttk.Label(self.master, text="Master Password:", font=(self.FONT_NAME, self.FONT_SIZE), style="Transparent.TLabel").grid(row=0, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
+        ttk.Label(self.master, text="Master Password:", style="Bold.TLabel").grid(row=0, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
         self.password_entry = ttk.Entry(self.master, show="*")
         self.password_entry.grid(row=0, column=1, sticky="we", padx=(self.PAD, self.PAD*2), pady=self.PAD)
         self.password_entry.focus_set()
         
         # Create algorithm dropdown
-        ttk.Label(self.master, text="Algorithm:", font=(self.FONT_NAME, self.FONT_SIZE), style="Transparent.TLabel").grid(row=1, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
+        ttk.Label(self.master, text="Algorithm:", style="Bold.TLabel").grid(row=1, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
         self.algorithm_var = tk.StringVar()
         self.algorithm_dropdown = ttk.OptionMenu(self.master, self.algorithm_var, self.algorithm[0], *self.algorithm)
         self.algorithm_dropdown.grid(row=1, column=1, sticky="we", padx=(self.PAD, self.PAD*2), pady=self.PAD)
         
         # Create iv_generator dropdown
-        ttk.Label(self.master, text="IV Generator:", font=(self.FONT_NAME, self.FONT_SIZE), style="Transparent.TLabel").grid(row=2, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
+        ttk.Label(self.master, text="IV Generator:", style="Bold.TLabel").grid(row=2, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
         self.iv_generator_var = tk.StringVar()
         self.iv_generator_dropdown = ttk.OptionMenu(self.master, self.iv_generator_var, self.generator[0], *self.generator)
         self.iv_generator_dropdown.grid(row=2, column=1, sticky="we", padx=(self.PAD, self.PAD*2), pady=self.PAD)
 
         # Create input text field
-        ttk.Label(self.master, text="Input Text:", font=(self.FONT_NAME, self.FONT_SIZE), style="Transparent.TLabel").grid(row=3, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
+        ttk.Label(self.master, text="Input Text:", style="Bold.TLabel").grid(row=3, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
         self.input_text = tk.Text(self.master, height=3, width=50)
         self.input_text.grid(row=3, column=1, columnspan=2, sticky="we", padx=(self.PAD, self.PAD*2), pady=self.PAD)
         
         # Create result field
-        ttk.Label(self.master, text="Result:", font=(self.FONT_NAME, self.FONT_SIZE), style="Transparent.TLabel").grid(row=4, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
+        ttk.Label(self.master, text="Result:", style="Bold.TLabel").grid(row=4, column=0, sticky="w", padx=self.PAD, pady=self.PAD)
         self.result_text = tk.Text(self.master, height=8, width=50)
         self.result_text.grid(row=4, column=1, columnspan=2, sticky="we", padx=(self.PAD, self.PAD*2), pady=self.PAD)
         
