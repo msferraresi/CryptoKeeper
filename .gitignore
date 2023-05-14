@@ -1,6 +1,7 @@
 .vscode/settings.json
-.venv/*
-.src/view/__pycache__/
-.src/model/__pycache__/
-.src/controller/__pycache__/
+venv/
+cryenv/
+build/
+dist/
+CryptoKeeper.spec
 *.pyc

@@ -30,7 +30,6 @@ class Principal(tk.Frame):
 
         style.configure("Red.TButton", background="red", foreground="black")
         style.configure("Green.TButton", background="green", foreground="black")
-        style.configure("Transparent.TLabel", background=self.BG_COLOR, foreground=self.FG_COLOR)
         style.configure("Bold.TLabel", font=("Arial", 10, "bold"), background=self.BG_COLOR, foreground=self.FG_COLOR)
 
         self.master.title("CryptoKeeper")
